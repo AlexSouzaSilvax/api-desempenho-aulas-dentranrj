@@ -39,31 +39,40 @@ public class ResumoAulasTeoricasService {
 
 	public List<ResumoAulasTeoricasBean> convertRetornoResumo(String retorno) throws IOException {
 
-		List<ResumoAulasTeoricasBean> resumoAulasTeoricasBeans = new ArrayList<>();
+		try {
 
-		List<String> lista1 = new ArrayList<>();
-		List<String> lista2 = new ArrayList<>();
+			List<ResumoAulasTeoricasBean> resumoAulasTeoricasBeans = new ArrayList<>();
 
-		Document doc = Jsoup.parseBodyFragment(retorno);
+			List<String> lista1 = new ArrayList<>();
+			List<String> lista2 = new ArrayList<>();
 
-		for (Element trTd : doc.select("tr td")) {
-			if (Helper.validNumber(trTd.ownText())) {
-				lista1.add(trTd.ownText()); // quantidade
+			Document doc = Jsoup.parseBodyFragment(retorno);
+
+			for (Element trTd : doc.select("tr td")) {
+				if (Helper.validNumber(trTd.ownText())) {
+					lista1.add(trTd.ownText()); // quantidade
+				}
 			}
-		}
 
-		for (Element a : doc.select("a")) {
-			lista2.add(a.ownText()); // disciplina
-		}
+			for (Element a : doc.select("a")) {
+				lista2.add(a.ownText()); // disciplina
+			}
 
-		for (int i = 0; i < 5; i++) {
-			ResumoAulasTeoricasBean ResumoAulasTeoricasBean = new ResumoAulasTeoricasBean();
-			ResumoAulasTeoricasBean.setNome(Helper.formatText(lista2.get(i)));
-			ResumoAulasTeoricasBean.setQuantidade(lista1.get(i));
-			resumoAulasTeoricasBeans.add(ResumoAulasTeoricasBean);
-		}
+			for (int i = 0; i < 5; i++) {
+				ResumoAulasTeoricasBean ResumoAulasTeoricasBean = new ResumoAulasTeoricasBean();
+				ResumoAulasTeoricasBean.setNome(Helper.formatText(lista2.get(i)));
+				ResumoAulasTeoricasBean.setQuantidade(lista1.get(i));
+				resumoAulasTeoricasBeans.add(ResumoAulasTeoricasBean);
+			}
 
-		return resumoAulasTeoricasBeans;
+			return resumoAulasTeoricasBeans;
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			if (retorno.contains(
+					"NENHUM REGISTRO ENCONTRADO DE AULAS")) {
+				System.out.println("Nenhum registro encontrado de aulas.");			
+			};
+		}
+		return null;
 	}
 
 }

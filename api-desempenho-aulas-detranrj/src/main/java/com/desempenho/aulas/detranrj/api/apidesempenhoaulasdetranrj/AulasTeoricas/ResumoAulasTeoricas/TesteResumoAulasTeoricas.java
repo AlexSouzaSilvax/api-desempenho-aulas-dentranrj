@@ -16,7 +16,10 @@ public class TesteResumoAulasTeoricas {
         // String renach = "490994679";
 
         // joao
-        String renach = "491165714";
+        // String renach = "491165714";
+
+        // rayssa
+        String renach = "967904870";
 
         List<ResumoAulasTeoricasBean> disciplinaBeans = disciplinaController
                 .convertRetornoResumo(disciplinaController.requestResumoAulas(renach));
