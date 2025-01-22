@@ -1,78 +1,83 @@
 package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.ResumoAulasTeoricas;
 
-import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util.Helper;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util.Helper;
 
 public class ResumoAulasTeoricasService {
 
 	public String requestResumoAulas(String renach) {
 		try {
 			Process process = Runtime.getRuntime().exec("curl -k -d \"renach=RJ" + renach
-					+ "&tipo=resumo\" -H \"Content-Type: application/x-www-form-urlencoded\" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid");
+					+ "&tipo=resumo\" -H \"Content-Type: application/x-www-form-urlencoded\" --header \"Accept-Charset: UTF-8\" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid");
+
 			StringBuilder output = new StringBuilder();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				output.append(line + "\n");
+			try (BufferedReader reader = new BufferedReader(
+					new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					output.append(line).append("\n");
+				}
 			}
-			int exitVal = process.waitFor();
-			if (exitVal == 0) {
-				return output.toString();
+
+			if (process.waitFor() == 0) {
+				return Normalizer.normalize(output.toString(), Normalizer.Form.NFC);
 			} else {
 				return "";
 			}
-		} catch (IOException e) {
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			return "";
 		}
-		return "";
 	}
 
-	public List<ResumoAulasTeoricasBean> convertRetornoResumo(String retorno) throws IOException {
+	public List<ResumoAulasTeoricasBean> convertRetornoResumo(String retorno) {
+		List<ResumoAulasTeoricasBean> resumoAulasTeoricasBeans = new ArrayList<>();
 
 		try {
-
-			List<ResumoAulasTeoricasBean> resumoAulasTeoricasBeans = new ArrayList<>();
-
-			List<String> lista1 = new ArrayList<>();
-			List<String> lista2 = new ArrayList<>();
+			if (retorno.contains("NENHUM REGISTRO ENCONTRADO DE AULAS")) {
+				System.out.println("Nenhum registro encontrado de aulas.");
+				return resumoAulasTeoricasBeans;
+			}
 
 			Document doc = Jsoup.parseBodyFragment(retorno);
 
+			List<String> listaQuantidades = new ArrayList<>();
+			List<String> listaDisciplinas = new ArrayList<>();
+
 			for (Element trTd : doc.select("tr td")) {
 				if (Helper.validNumber(trTd.ownText())) {
-					lista1.add(trTd.ownText()); // quantidade
+					listaQuantidades.add(trTd.ownText().trim());
 				}
 			}
 
 			for (Element a : doc.select("a")) {
-				lista2.add(a.ownText()); // disciplina
+				listaDisciplinas.add(Helper.formatText(Normalizer.normalize(a.ownText(), Normalizer.Form.NFC)));
 			}
 
-			for (int i = 0; i < 5; i++) {
-				ResumoAulasTeoricasBean ResumoAulasTeoricasBean = new ResumoAulasTeoricasBean();
-				ResumoAulasTeoricasBean.setNome(Helper.formatText(lista2.get(i)));
-				ResumoAulasTeoricasBean.setQuantidade(lista1.get(i));
-				resumoAulasTeoricasBeans.add(ResumoAulasTeoricasBean);
+			int minSize = Math.min(listaQuantidades.size(), listaDisciplinas.size());
+			for (int i = 0; i < minSize; i++) {
+				ResumoAulasTeoricasBean resumoBean = new ResumoAulasTeoricasBean();
+				resumoBean.setNome(listaDisciplinas.get(i));
+				resumoBean.setQuantidade(listaQuantidades.get(i));
+				resumoAulasTeoricasBeans.add(resumoBean);
 			}
 
-			return resumoAulasTeoricasBeans;
-		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-			if (retorno.contains(
-					"NENHUM REGISTRO ENCONTRADO DE AULAS")) {
-				System.out.println("Nenhum registro encontrado de aulas.");			
-			};
+		} catch (Exception e) {
+			System.err.println("Erro ao processar o resumo: " + e.getMessage());
+			e.printStackTrace();
 		}
-		return null;
-	}
 
+		return resumoAulasTeoricasBeans;
+	}
 }
