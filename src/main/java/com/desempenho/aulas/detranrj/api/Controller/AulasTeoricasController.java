@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.desempenho.aulas.detranrj.api.Service.DetalheAulasTeoricasService;
 import com.desempenho.aulas.detranrj.api.Service.ResumoAulasTeoricasService;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Api(value = "Aulas Teoricas")
-@CrossOrigin("*")
-@RestController(value = "aulasteoricas")
-@RequestMapping(name = "aulasteoricas", value = "aulasteoricas")
+@Tag(name = "Aulas Teóricas", description = "Suas aulas teóricas")
+@CrossOrigin
+@RestController(value = "/api/aulasteoricas")
+@RequestMapping(name = "/api/aulasteoricas", value = "aulasteoricas")
 public class AulasTeoricasController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class AulasTeoricasController {
 	@Autowired
 	DetalheAulasTeoricasService detalheAulasTeoricasService;
 
-	@ApiOperation(value = "Lista de quantidade de aulas por disciplina")
+	@Operation(summary = "Quantidade das Aulas Teóricas Concluídas", description = "Lista de quantidade de aulas teóricas por disciplina")
 	@GetMapping("resumo")
 	public ResponseEntity<Object> getQtdAulasDisciplina(@RequestParam String renach) throws IOException {
 		try {
@@ -39,7 +39,7 @@ public class AulasTeoricasController {
 		}
 	}
 
-	@ApiOperation(value = "Retorna detalhe das aulas teoricas")
+	@Operation(summary = "Detalhe das Aulas Teóricas", description = "Retorna uma lista do detalhe das aulas teóricas")
 	@GetMapping("detalhe")
 	public ResponseEntity<Object> getDetalheAulas(@RequestParam String renach) throws IOException {
 		try {
