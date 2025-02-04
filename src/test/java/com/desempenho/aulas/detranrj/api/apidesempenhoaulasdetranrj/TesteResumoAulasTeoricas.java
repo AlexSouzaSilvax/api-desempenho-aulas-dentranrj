@@ -1,7 +1,10 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.ResumoAulasTeoricas;
+package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj;
 
 import java.io.IOException;
 import java.util.List;
+
+import com.desempenho.aulas.detranrj.api.Entity.ResumoAulasTeoricasEntity;
+import com.desempenho.aulas.detranrj.api.Service.ResumoAulasTeoricasService;
 
 public class TesteResumoAulasTeoricas {
 
@@ -21,7 +24,7 @@ public class TesteResumoAulasTeoricas {
         // rayssa
         // String renach = "967904870";
 
-        List<ResumoAulasTeoricasBean> disciplinaBeans = disciplinaController
+        List<ResumoAulasTeoricasEntity> disciplinaBeans = disciplinaController
                 .convertRetornoResumo(disciplinaController.requestResumoAulas(renach));
 
         for (int i = 0; i < disciplinaBeans.size(); i++) {

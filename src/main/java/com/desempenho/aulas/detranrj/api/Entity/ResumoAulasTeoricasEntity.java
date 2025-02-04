@@ -1,6 +1,6 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.ResumoAulasTeoricas;
+package com.desempenho.aulas.detranrj.api.Entity;
 
-public class ResumoAulasTeoricasBean {
+public class ResumoAulasTeoricasEntity {
 	private String nome;
 	private String quantidade;
 

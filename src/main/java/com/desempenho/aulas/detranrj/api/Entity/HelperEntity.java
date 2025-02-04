@@ -1,6 +1,6 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.DetalheAulasTeoricas;
+package com.desempenho.aulas.detranrj.api.Entity;
 
-public class HelperBean {
+public class HelperEntity {
 
 	private String texto;
 	private int posicao;

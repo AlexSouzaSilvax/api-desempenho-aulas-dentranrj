@@ -1,7 +1,8 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Controller;
+package com.desempenho.aulas.detranrj.api.Controller;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.DetalheAulasTeoricas.DetalheAulasTeoricasService;
-import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.ResumoAulasTeoricas.ResumoAulasTeoricasService;
+import com.desempenho.aulas.detranrj.api.Service.DetalheAulasTeoricasService;
+import com.desempenho.aulas.detranrj.api.Service.ResumoAulasTeoricasService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -20,8 +22,11 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(name = "aulasteoricas", value = "aulasteoricas")
 public class AulasTeoricasController {
 
-	ResumoAulasTeoricasService resumoAulasTeoricasService = new ResumoAulasTeoricasService();
-	DetalheAulasTeoricasService detalheAulasTeoricasService = new DetalheAulasTeoricasService();
+	@Autowired
+	ResumoAulasTeoricasService resumoAulasTeoricasService;
+
+	@Autowired
+	DetalheAulasTeoricasService detalheAulasTeoricasService;
 
 	@ApiOperation(value = "Lista de quantidade de aulas por disciplina")
 	@GetMapping("resumo")

@@ -1,4 +1,4 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.ResumoAulasTeoricas;
+package com.desempenho.aulas.detranrj.api.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +11,12 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Service;
 
-import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util.Helper;
+import com.desempenho.aulas.detranrj.api.Entity.ResumoAulasTeoricasEntity;
+import com.desempenho.aulas.detranrj.api.Util.Helper;
 
+@Service
 public class ResumoAulasTeoricasService {
 
 	public String requestResumoAulas(String renach) {
@@ -41,8 +44,8 @@ public class ResumoAulasTeoricasService {
 		}
 	}
 
-	public List<ResumoAulasTeoricasBean> convertRetornoResumo(String retorno) {
-		List<ResumoAulasTeoricasBean> resumoAulasTeoricasBeans = new ArrayList<>();
+	public List<ResumoAulasTeoricasEntity> convertRetornoResumo(String retorno) {
+		List<ResumoAulasTeoricasEntity> resumoAulasTeoricasBeans = new ArrayList<>();
 
 		try {
 			if (retorno.contains("NENHUM REGISTRO ENCONTRADO DE AULAS")) {
@@ -67,7 +70,7 @@ public class ResumoAulasTeoricasService {
 
 			int minSize = Math.min(listaQuantidades.size(), listaDisciplinas.size());
 			for (int i = 0; i < minSize; i++) {
-				ResumoAulasTeoricasBean resumoBean = new ResumoAulasTeoricasBean();
+				ResumoAulasTeoricasEntity resumoBean = new ResumoAulasTeoricasEntity();
 				resumoBean.setNome(listaDisciplinas.get(i));
 				resumoBean.setQuantidade(listaQuantidades.get(i));
 				resumoAulasTeoricasBeans.add(resumoBean);

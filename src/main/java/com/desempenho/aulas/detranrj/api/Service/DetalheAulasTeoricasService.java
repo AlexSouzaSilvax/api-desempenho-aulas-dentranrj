@@ -1,4 +1,4 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.AulasTeoricas.DetalheAulasTeoricas;
+package com.desempenho.aulas.detranrj.api.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +11,12 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Service;
 
-import com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util.Helper;
+import com.desempenho.aulas.detranrj.api.Entity.DetalheAulasTeoricasEntity;
+import com.desempenho.aulas.detranrj.api.Util.Helper;
 
+@Service
 public class DetalheAulasTeoricasService {
 
 	public String requestDetalheAulas(String renach) {
@@ -53,13 +56,13 @@ public class DetalheAulasTeoricasService {
 		return "";
 	}
 
-	public List<DetalheAulasTeoricasBean> convertRetornoDetalhe(String retorno) {
+	public List<DetalheAulasTeoricasEntity> convertRetornoDetalhe(String retorno) {
 		if (retorno == null || retorno.isEmpty()) {
 			System.out.println("Retorno vazio ou nulo.");
 			return new ArrayList<>();
 		}
 
-		List<DetalheAulasTeoricasBean> detalheAulasTeoricasBeans = new ArrayList<>();
+		List<DetalheAulasTeoricasEntity> detalheAulasTeoricasBeans = new ArrayList<>();
 		List<String> lista1 = new ArrayList<>();
 
 		try {
@@ -75,7 +78,7 @@ public class DetalheAulasTeoricasService {
 				if (i + 5 >= lista1.size())
 					break;
 
-				DetalheAulasTeoricasBean detalheAulasTeoricasBean = new DetalheAulasTeoricasBean();
+				DetalheAulasTeoricasEntity detalheAulasTeoricasBean = new DetalheAulasTeoricasEntity();
 				detalheAulasTeoricasBean.setData(Helper.formatData(lista1.get(i)));
 				detalheAulasTeoricasBean.setInicio(lista1.get(i + 1));
 				detalheAulasTeoricasBean.setFim(lista1.get(i + 2));

@@ -1,4 +1,4 @@
-package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util;
+package com.desempenho.aulas.detranrj.api.Util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
