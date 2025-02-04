@@ -63,9 +63,12 @@ public class DetalheAulasTeoricasService {
 		List<String> lista1 = new ArrayList<>();
 
 		try {
+
 			Document doc = Jsoup.parseBodyFragment(retorno);
 			for (Element trTd : doc.select("tr td")) {
-				lista1.add(Helper.correcaoString(Helper.formatText(trTd.ownText())));
+				Element span = trTd.selectFirst("span");
+				String text = (span != null) ? span.text() : trTd.ownText();
+				lista1.add(Helper.formatText(text));
 			}
 
 			for (int i = 0; i < lista1.size(); i += 6) {
@@ -73,11 +76,11 @@ public class DetalheAulasTeoricasService {
 					break;
 
 				DetalheAulasTeoricasBean detalheAulasTeoricasBean = new DetalheAulasTeoricasBean();
-				detalheAulasTeoricasBean.setData(lista1.get(i));
+				detalheAulasTeoricasBean.setData(Helper.formatData(lista1.get(i)));
 				detalheAulasTeoricasBean.setInicio(lista1.get(i + 1));
 				detalheAulasTeoricasBean.setFim(lista1.get(i + 2));
-				detalheAulasTeoricasBean.setDisciplina(lista1.get(i + 3));
-				detalheAulasTeoricasBean.setDataEnvio(lista1.get(i + 4));
+				detalheAulasTeoricasBean.setDisciplina(Helper.correcaoString(lista1.get(i + 3)));
+				detalheAulasTeoricasBean.setDataEnvio(Helper.formatData(lista1.get(i + 4)));
 				detalheAulasTeoricasBean.setStatus(lista1.get(i + 5));
 
 				detalheAulasTeoricasBeans.add(detalheAulasTeoricasBean);

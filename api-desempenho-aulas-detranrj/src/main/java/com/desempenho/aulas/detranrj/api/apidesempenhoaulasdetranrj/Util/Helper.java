@@ -1,5 +1,8 @@
 package com.desempenho.aulas.detranrj.api.apidesempenhoaulasdetranrj.Util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +34,19 @@ public class Helper {
 			}
 		}
 		return entrada;
+	}
+
+	public static String formatData(String data) {
+		try {
+			SimpleDateFormat inputFormat = new SimpleDateFormat("M/dd/yyyy hh:mm:ss a");
+			SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+			Date date = inputFormat.parse(data);
+			return outputFormat.format(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return data;
+		}
 	}
 
 }

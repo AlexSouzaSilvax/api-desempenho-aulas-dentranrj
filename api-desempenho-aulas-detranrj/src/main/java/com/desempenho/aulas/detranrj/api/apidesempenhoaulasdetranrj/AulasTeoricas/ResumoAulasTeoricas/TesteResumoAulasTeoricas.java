@@ -10,7 +10,7 @@ public class TesteResumoAulasTeoricas {
         ResumoAulasTeoricasService disciplinaController = new ResumoAulasTeoricasService();
 
         // alex
-        // String renach = "332806847";
+        String renach = "332806847";
 
         // mae
         // String renach = "490994679";
@@ -19,7 +19,7 @@ public class TesteResumoAulasTeoricas {
         // String renach = "491165714";
 
         // rayssa
-        String renach = "967904870";
+        // String renach = "967904870";
 
         List<ResumoAulasTeoricasBean> disciplinaBeans = disciplinaController
                 .convertRetornoResumo(disciplinaController.requestResumoAulas(renach));
