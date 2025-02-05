@@ -1,9 +1,5 @@
 package com.desempenho.aulas.detranrj.api.Service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,32 +12,16 @@ import org.springframework.stereotype.Service;
 import com.desempenho.aulas.detranrj.api.Entity.ResumoAulasTeoricasEntity;
 import com.desempenho.aulas.detranrj.api.Util.Helper;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ResumoAulasTeoricasService {
 
+	private final AulasService aulasService;
+
 	public String requestResumoAulas(String renach) {
-		try {
-			Process process = Runtime.getRuntime().exec("curl -k -d \"renach=RJ" + renach
-					+ "&tipo=resumo\" -H \"Content-Type: application/x-www-form-urlencoded\" --header \"Accept-Charset: UTF-8\" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid");
-
-			StringBuilder output = new StringBuilder();
-			try (BufferedReader reader = new BufferedReader(
-					new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
-				String line;
-				while ((line = reader.readLine()) != null) {
-					output.append(line).append("\n");
-				}
-			}
-
-			if (process.waitFor() == 0) {
-				return Normalizer.normalize(output.toString(), Normalizer.Form.NFC);
-			} else {
-				return "";
-			}
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-			return "";
-		}
+		return aulasService.requestAulas(renach, "", "resumo");
 	}
 
 	public List<ResumoAulasTeoricasEntity> convertRetornoResumo(String retorno) {
@@ -55,12 +35,12 @@ public class ResumoAulasTeoricasService {
 
 			Document doc = Jsoup.parseBodyFragment(retorno);
 
-			List<String> listaQuantidades = new ArrayList<>();
+			List<String> listaQuantidadeAulas = new ArrayList<>();
 			List<String> listaDisciplinas = new ArrayList<>();
 
 			for (Element trTd : doc.select("tr td")) {
 				if (Helper.validNumber(trTd.ownText())) {
-					listaQuantidades.add(trTd.ownText().trim());
+					listaQuantidadeAulas.add(trTd.ownText().trim());
 				}
 			}
 
@@ -68,12 +48,10 @@ public class ResumoAulasTeoricasService {
 				listaDisciplinas.add(Helper.formatText(Normalizer.normalize(a.ownText(), Normalizer.Form.NFC)));
 			}
 
-			int minSize = Math.min(listaQuantidades.size(), listaDisciplinas.size());
+			int minSize = Math.min(listaQuantidadeAulas.size(), listaDisciplinas.size());
 			for (int i = 0; i < minSize; i++) {
-				ResumoAulasTeoricasEntity resumoBean = new ResumoAulasTeoricasEntity();
-				resumoBean.setNome(listaDisciplinas.get(i));
-				resumoBean.setQuantidade(listaQuantidades.get(i));
-				resumoAulasTeoricasBeans.add(resumoBean);
+				resumoAulasTeoricasBeans
+						.add(new ResumoAulasTeoricasEntity(listaDisciplinas.get(i), listaQuantidadeAulas.get(i)));
 			}
 
 		} catch (Exception e) {

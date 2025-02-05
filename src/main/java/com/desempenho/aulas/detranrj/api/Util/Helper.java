@@ -21,6 +21,8 @@ public class Helper {
 	public static String correcaoString(String entrada) {
 
 		Map<String, String> strings = new HashMap<>();
+		strings.put("Pratico De Direcao Veicular - Moto", "Prático De Direção Veícular - Moto");
+		strings.put("Pratico De Direcao Veicular - Auto", "Prático De Direção Veícular - Auto");
 		strings.put("Dire", "Direção Defensiva");
 		strings.put("No", "Noções de Mecânica");
 		strings.put("Legisla", "Legislação de Trânsito");

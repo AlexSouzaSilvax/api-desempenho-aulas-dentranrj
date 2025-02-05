@@ -10,14 +10,13 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class DetalheAulasTeoricasService {
+public class DetalheAulasPraticasService {
 
-	private final AulasService aulasService;
+	private final AulasService detalheAulasService;
 
-	public List<AulasEntity> getDetalheAulasTeoricas(String renach) {
-		return aulasService
+	public List<AulasEntity> getDetalheAulasPraticas(String renach) {
+		return detalheAulasService
 				.convertRetornoAulas(
-						aulasService.requestAulas(renach, "TEORICAS", "detalhesTeorico"));
+						detalheAulasService.requestAulas(renach, "", "pratica"));
 	}
-
 }

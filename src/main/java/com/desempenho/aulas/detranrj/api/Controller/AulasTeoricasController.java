@@ -43,8 +43,7 @@ public class AulasTeoricasController {
 	@GetMapping("detalhe")
 	public ResponseEntity<Object> getDetalheAulas(@RequestParam String renach) throws IOException {
 		try {
-			return ResponseEntity.ok().body(detalheAulasTeoricasService
-					.convertRetornoDetalhe(detalheAulasTeoricasService.requestDetalheAulas(renach)));
+			return ResponseEntity.ok().body(detalheAulasTeoricasService.getDetalheAulasTeoricas(renach));
 		} catch (Exception e) {
 			return ResponseEntity.ok().body("Nenhuma informação encontrada");
 		}
