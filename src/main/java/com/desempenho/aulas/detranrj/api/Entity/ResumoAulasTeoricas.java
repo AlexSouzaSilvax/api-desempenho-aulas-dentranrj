@@ -1,4 +1,4 @@
-package com.desempenho.aulas.detranrj.api.Entity;
+package com.desempenho.aulas.detranrj.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ResumoAulasTeoricasEntity {
+public class ResumoAulasTeoricas {
 
 	private String disciplina;
 
