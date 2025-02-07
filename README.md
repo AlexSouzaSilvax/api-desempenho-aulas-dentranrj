@@ -105,16 +105,19 @@ Se você deseja contribuir com este projeto, sinta-se à vontade para abrir um *
 
 <br>
 
-## 💖 Faça uma Doação
+## 💖 Apoie este Projeto
 
-Se você gostou do projeto e gostaria de contribuir, você pode fazer uma doação através do seguinte QR Code:
+Se você gostou do projeto e gostaria de contribuir, faça uma doação via **Pix** 💠
 
 <p align="center">
-  <img width="300" height="auto" src="https://raw.githubusercontent.com/AlexSouzaSilvax/desempenho-aulas-dentranrj/refs/heads/dev/assets/qrcode-pix.jpg" alt="QR Code de Doação" />
+  <img width="400" height="auto" src="https://raw.githubusercontent.com/AlexSouzaSilvax/desempenho-aulas-dentranrj/refs/heads/dev/assets/qrcode-pix.jpg" alt="QR Code de Doação" />
 </p>
 
 ```
-00020126760014br.gov.bcb.pix0136a942ad44-c3f1-4694-b427-5561f0baea9b0214MUITO OBRIGADO5204000053039865802BR5919Alex Souza Da Silva6009Sao Paulo62280524DoacaoProjetosOpenSource6304CCA3
+00020126760014br.gov.bcb.pix0136a942ad44-c3f1-4694-b427-5561f0baea9b
+0214MUITO OBRIGADO5204000053039865802BR
+5919Alex Souza Da Silva6009Sao Paulo
+62280524DoacaoProjetosOpenSource6304CCA3
 ```
 
 <br>
@@ -123,6 +126,7 @@ Se você gostou do projeto e gostaria de contribuir, você pode fazer uma doaç�
 
 Se tiver dúvidas ou sugestões, entre em contato pelo e-mail: [alexsouzasilvax@gmail.com](mailto:alexsouzasilvax@gmail.com).
 
+<br>
 <br>
 
 
