@@ -29,13 +29,13 @@ Todos os dados fornecidos pela nossa API são **obtidos de forma totalmente púb
 
 ## 🌐 Hospedagem
 
-- **API**: [Acessar API](https://api-desempenho-aulas-detranrj.onrender.com/)
+- **API**: <a href="https://api-desempenho-aulas-detranrj.onrender.com/swagger-ui/index.html" target="_blank">Acessar API</a>.
 
 <br>
 
 ## 📋 Metodologia de Desenvolvimento
 
-Utilizamos metodologias ágeis para o desenvolvimento desta API, com foco no **Kanban**. Acompanhe o progresso do projeto no nosso quadro do Trello: [Trello Board](https://trello.com/b/x0ljXeUp/desempenho-aulas-auto-escola-detran-rj).
+Utilizamos metodologias ágeis para o desenvolvimento desta API, com foco no **Kanban**. Acompanhe o progresso do projeto no nosso quadro do Trello: <a href="https://trello.com/b/x0ljXeUp/desempenho-aulas-auto-escola-detran-rj" target="_blank">Trello Board</a>.
 
 <br>
 
@@ -50,7 +50,7 @@ Utilizamos metodologias ágeis para o desenvolvimento desta API, com foco no **K
 
 ## 📚 Documentação da API
 
-A documentação completa da API está disponível via Swagger: [Documentação Swagger](https://api-desempenho-aulas-detranrj.onrender.com/swagger-ui/index.html).
+A documentação completa da API está disponível via Swagger: <a href="https://api-desempenho-aulas-detranrj.onrender.com/swagger-ui/index.html" target="_blank">Documentação Swagger</a>.
 
 <br>
 
@@ -94,7 +94,7 @@ Para rodar a API localmente, use o seguinte comando:
 
 ## 🌍 Deploy no Render
 
-1. Acesse o painel do Render: [Dashboard Render](https://dashboard.render.com/web/srv-cuh95lhu0jms7380bf2g).
+1. Acesse o painel do Render: <a href="https://dashboard.render.com/web/srv-cuh95lhu0jms7380bf2g" target="_blank">Dashboard Render</a>.
 2. Clique em **Manual Deploy** → **Deploy latest reference**.
 
 <br>
