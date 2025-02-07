@@ -1,5 +1,5 @@
 
-# 🚗 API Desempenho de Aulas da Auto Escola no Detran RJ
+# 🚗 API Desempenho de Aulas Auto Escola no Detran RJ
 _Consulta de aulas e provas de autoescola._
 
 <br>
@@ -52,6 +52,7 @@ Utilizamos metodologias ágeis para o desenvolvimento desta API, com foco no **K
 
 A documentação completa da API está disponível via Swagger: [Documentação Swagger](https://api-desempenho-aulas-detranrj.onrender.com/swagger-ui/index.html).
 
+<br>
 
 ## 🛠️ Executar o Projeto
 
@@ -60,6 +61,8 @@ Para rodar a API localmente, use o seguinte comando:
 ```bash
     mvn spring-boot:run
 ```
+
+<br>
 
 ## 🚢 Subir para Docker Hub
 
@@ -87,17 +90,20 @@ Para rodar a API localmente, use o seguinte comando:
     docker push seu-usuario/api-desempenho-aulas-detranrj:latest
 ```
 
+<br>
+
 ## 🌍 Deploy no Render
 
 1. Acesse o painel do Render: [Dashboard Render](https://dashboard.render.com/web/srv-cuh95lhu0jms7380bf2g).
 2. Clique em **Manual Deploy** → **Deploy latest reference**.
 
+<br>
 
 ## 🤝 Contribuição
 
 Se você deseja contribuir com este projeto, sinta-se à vontade para abrir um **pull request** ou **relatar um problema**.
 
-
+<br>
 
 ## 💖 Faça uma Doação
 
@@ -110,6 +116,8 @@ Se você gostou do projeto e gostaria de contribuir, você pode fazer uma doaç�
 ```
 00020126760014br.gov.bcb.pix0136a942ad44-c3f1-4694-b427-5561f0baea9b0214MUITO OBRIGADO5204000053039865802BR5919Alex Souza Da Silva6009Sao Paulo62280524DoacaoProjetosOpenSource6304CCA3
 ```
+
+<br>
 
 ## 📩 Contato
 
