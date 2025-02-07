@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 @Tag(name = "Provas", description = "Resultados das suas provas")
 @CrossOrigin
 @RestController(value = "/api/provas")
-@RequestMapping(name = "/api/provas", value = "provas")
+@RequestMapping(name = "/api/provas", value = "/api/provas")
 @Validated
 public class ProvasController {
 
