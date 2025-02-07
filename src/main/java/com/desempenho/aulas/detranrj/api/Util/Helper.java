@@ -1,4 +1,4 @@
-package com.desempenho.aulas.detranrj.api.Util;
+package com.desempenho.aulas.detranrj.api.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,21 +6,22 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.text.WordUtils;
+import org.apache.commons.lang3.StringUtils;
 
-@SuppressWarnings("deprecation")
 public class Helper {
+
 	public static boolean validNumber(String valor) {
 		return !valor.isEmpty() && !valor.equalsIgnoreCase(null) && valor.matches("[0-9]*");
 	}
 
 	public static String formatText(String valor) {
-		return WordUtils.capitalizeFully(valor);
+		return capitalizeFully(valor);
 	}
 
 	public static String correcaoString(String entrada) {
 
 		Map<String, String> strings = new HashMap<>();
+		strings.put("Tecnico Teorico", "Técnico Teórico");
 		strings.put("Pratico De Direcao Veicular - Moto", "Prático De Direção Veícular - Moto");
 		strings.put("Pratico De Direcao Veicular - Auto", "Prático De Direção Veícular - Auto");
 		strings.put("Dire", "Direção Defensiva");
@@ -46,9 +47,20 @@ public class Helper {
 			Date date = inputFormat.parse(data);
 			return outputFormat.format(date);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			return data;
 		}
+	}
+
+	public static String capitalizeFully(String str) {
+		if (str == null) {
+			return null;
+		}
+		String[] words = str.toLowerCase().split(" ");
+		for (int i = 0; i < words.length; i++) {
+			words[i] = StringUtils.capitalize(words[i]);
+		}
+		return String.join(" ", words);
 	}
 
 }
