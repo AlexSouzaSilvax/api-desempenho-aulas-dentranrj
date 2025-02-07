@@ -114,10 +114,7 @@ Se você gostou do projeto e gostaria de contribuir, faça uma doação via **Pi
 </p>
 
 ```
-00020126760014br.gov.bcb.pix0136a942ad44-c3f1-4694-b427-5561f0baea9b
-0214MUITO OBRIGADO5204000053039865802BR
-5919Alex Souza Da Silva6009Sao Paulo
-62280524DoacaoProjetosOpenSource6304CCA3
+00020126760014br.gov.bcb.pix0136a942ad44-c3f1-4694-b427-5561f0baea9b0214MUITO OBRIGADO5204000053039865802BR5919Alex Souza Da Silva6009Sao Paulo62280524DoacaoProjetosOpenSource6304CCA3
 ```
 
 <br>
