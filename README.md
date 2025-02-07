@@ -105,7 +105,7 @@ Se você deseja contribuir com este projeto, sinta-se à vontade para abrir um *
 
 <br>
 
-## 💖 Apoie este Projeto
+## 💰 Apoie este Projeto
 
 Se você gostou do projeto e gostaria de contribuir, faça uma doação via **Pix** 💠
 
