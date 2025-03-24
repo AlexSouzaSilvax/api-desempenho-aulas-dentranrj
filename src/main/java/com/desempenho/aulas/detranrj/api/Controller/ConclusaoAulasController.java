@@ -21,15 +21,15 @@ import jakarta.validation.Valid;
 
 @Tag(name = "Conclusão das Aulas", description = "Quadro de Conclusão das Aulas")
 @CrossOrigin
-@RestController(value = "/api/conclusao-aulas")
-@RequestMapping(name = "/api/conclusao-aulas", value = "/api/conclusao-aulas")
+@RestController(value = "/api/aulas/conclusao")
+@RequestMapping(name = "/api/aulas/conclusao", value = "/api/aulas/conclusao")
 @Validated
 public class ConclusaoAulasController {
 
 	@Autowired
 	ConclusaoAulasService conclusaoAulasService;
 
-	@Operation(summary = "Aulas", description = "Retorna uma lista com situação da conclusão das suas aulas")
+	@Operation(summary = "Conclusão das Aulas", description = "Retorna uma lista com situação da conclusão das suas aulas")
 	@PostMapping()
 	public CompletableFuture<ResponseEntity<? extends Object>> getConclusaoAulas(
 			@Valid @RequestBody RenachDTO request) {

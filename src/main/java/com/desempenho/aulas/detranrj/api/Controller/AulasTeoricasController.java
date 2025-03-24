@@ -21,8 +21,8 @@ import jakarta.validation.Valid;
 
 @Tag(name = "Aulas Teóricas", description = "Suas aulas teóricas")
 @CrossOrigin
-@RestController(value = "/api/aulasteoricas")
-@RequestMapping(name = "/api/aulasteoricas", value = "/api/aulasteoricas")
+@RestController(value = "/api/aulas/teorica")
+@RequestMapping(name = "/api/aulas/teorica", value = "/api/aulas/teorica")
 @Validated
 public class AulasTeoricasController {
 
