@@ -12,29 +12,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desempenho.aulas.detranrj.api.dto.RenachDTO;
-import com.desempenho.aulas.detranrj.api.service.ProvasService;
+import com.desempenho.aulas.detranrj.api.service.ConclusaoAulasService;
 import com.desempenho.aulas.detranrj.api.util.ResponseHandler;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "Provas", description = "Resultados das suas provas")
+@Tag(name = "Conclusão das Aulas", description = "Quadro de Conclusão das Aulas")
 @CrossOrigin
-@RestController(value = "/api/provas")
-@RequestMapping(name = "/api/provas", value = "/api/provas")
+@RestController(value = "/api/conclusao-aulas")
+@RequestMapping(name = "/api/conclusao-aulas", value = "/api/conclusao-aulas")
 @Validated
-public class ProvasController {
+public class ConclusaoAulasController {
 
 	@Autowired
-	ProvasService provasService;
+	ConclusaoAulasService conclusaoAulasService;
 
-	@Operation(summary = "Provas", description = "Retorna uma lista com resumo das suas provas")
-	@PostMapping("resultado")
-	public CompletableFuture<ResponseEntity<? extends Object>> getResultadoProvas(
+	@Operation(summary = "Aulas", description = "Retorna uma lista com situação da conclusão das suas aulas")
+	@PostMapping()
+	public CompletableFuture<ResponseEntity<? extends Object>> getConclusaoAulas(
 			@Valid @RequestBody RenachDTO request) {
 		return ResponseHandler
-				.handleAsyncRequest(() -> provasService.getResultadoProvas(request.getRenach()));
+				.handleAsyncRequest(() -> conclusaoAulasService.getConclusaoAulas(request.getRenach()));
 	}
 
 }
