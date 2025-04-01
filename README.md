@@ -110,7 +110,7 @@ Se você deseja contribuir com este projeto, sinta-se à vontade para abrir um *
 Se você gostou do projeto e gostaria de contribuir, faça uma doação via **Pix** 💠
 
 <p align="center">
-  <img width="400" height="auto" src="https://raw.githubusercontent.com/AlexSouzaSilvax/desempenho-aulas-dentranrj/refs/heads/dev/assets/qrcode-pix.jpg" alt="QR Code de Doação" />
+  <img width="400" height="auto" src="https://raw.githubusercontent.com/AlexSouzaSilvax/doacao-projetos-open-source/refs/heads/main/assets/qrcode-pix.jpg" alt="QR Code de Doação" />
 </p>
 
 ```
