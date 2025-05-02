@@ -43,7 +43,7 @@ Utilizamos metodologias ágeis para o desenvolvimento desta API, com foco no **K
 
 - 📍 Consulta das **Aulas Teóricas**.
 - 📍 Consulta das **Aulas Práticas**.
-- 📍 Situação das **Provas**.
+- 📍 Status de conclusão das **Aulas**.
 - 📑 **Documentação da API** com Swagger.
 
 <br>
@@ -57,6 +57,10 @@ A documentação completa da API está disponível via Swagger: <a href="https:/
 ## 🛠️ Executar o Projeto
 
 Para rodar a API localmente, use o seguinte comando:
+
+```bash
+    mvn clean install
+```
 
 ```bash
     mvn spring-boot:run

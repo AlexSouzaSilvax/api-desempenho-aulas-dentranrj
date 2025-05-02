@@ -17,17 +17,18 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ProvasService {
+public class ConclusaoAulasService {
 
 	private final AulasService aulasServiceHttpClient;
 
-	public CompletableFuture<List<Prova>> getResultadoProvas(String renach) {
+	public CompletableFuture<List<Prova>> getConclusaoAulas(String renach) {
 		return ResponseHandler.handleAsyncRequestService(
 				() -> aulasServiceHttpClient.requestAsync(renach, "", "conclusao"),
 				response -> convertRetorno(response));
 	}
 
 	public List<Prova> convertRetorno(String retorno) {
+
 		if (retorno == null || retorno.isEmpty()) {
 			System.out.println("Retorno vazio ou nulo.");
 			return new ArrayList<>();
